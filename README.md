@@ -1,2 +1,2 @@
-# s-hk-verkkoalgo
+# sahkoverkkoalgo
 Tietorakenteet &amp; algoritmit labrakurssin harjoitustyö
