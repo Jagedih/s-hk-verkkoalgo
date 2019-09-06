@@ -13,3 +13,6 @@ Valitsin aiheen koska olen työskennellyt sähköverkkojen parissa ja aihe sopii
 Ohjelmointikielenä on Java
 Sähköverkon datan luon itse.
 
+lähteet:
+Tietorakenteet ja algoritmit kirja (Tirakirja - Antti Laaksonen)
+
