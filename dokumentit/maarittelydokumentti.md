@@ -4,10 +4,9 @@ saarekkeita eli toisistaan eriytyneitä sähköverkon osasia. Laboratoriotyön t
 sähköverkon yhtenäiset osat syvyyshaulla. Tämän jälkeen ohjelma etsii lyhimmän reitin isoimmasta verkosta pienempään/pienempiin
 verkkoihin käyttäen Dijkstraa ja A*. Tarkoituksena on myös tutkia näiden kahden algoritmin eroa. 
 
-Ohjelmaan syötetään sähköasemien (solmujen) tietoja. Näissä tiedoissa on sähköasemalta lähtevien
-voimajohtojen tilatiedot (johdon katkaisijan tila ja johdon päässä oleva sähköaseman nimi). Voimajohdon katkaisijan tilasta 
-ohjelma tarkastaa onko johto ns. kylmänä vai ei. Ohjelma muodostaa annetuista tiedoista vierusmatriisin, jota käytetään
-ongelman ratkaisemisessa. Sähköverkon datan luon tise. Aikavaativuus Dijkstran takia O((solmut + kaaret) * log (kaaret)) ja tilavaativuus O(solmut)
+Syötteenä ohjelma saa tekstimuodossa tietoja verkon kaarista. Kaaridatassa ilmoitetaan kahden solmun nimi, joka kuvaa voimajohtoa ja lisäksi tähän tietoon on liitetty true tai false tieto joka kuvaa voimajohdon tilaa. 
+Ohjelma muodostaa annetuista tiedoista vierusmatriisin, jota käytetään
+Sähköverkon datan luon itse. Aikavaativuus Dijkstran takia O((solmut + kaaret) * log (kaaret)) ja tilavaativuus O(solmut)^2
 
 Valitsin aiheen koska olen työskennellyt sähköverkkojen parissa ja aihe sopii hyvin kurssille.
 Ohjelmointikielenä on Java
