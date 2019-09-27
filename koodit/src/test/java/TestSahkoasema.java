@@ -1,20 +1,25 @@
+
+import Verkkokomponentit.Sahkoasema;
 import static org.junit.Assert.*;
 import org.junit.Test;
+
 public class TestSahkoasema {
-
+   
+    Sahkoasema testiasema;
+    public TestSahkoasema(){
+        this.testiasema = new Sahkoasema("1");
+        this.testiasema.lisaaVoimajohtoAsemalle("2", "1");
+        this.testiasema.lisaaVoimajohtoAsemalle("3", "0");
+    }
     @Test
-    public void testSahkoasemanJannite() {
-        
-        Sahkoasema testiSahkoasema = new Sahkoasema("testi");
-        Voimajohto testijohto1 = new Voimajohto(new Sahkoasema("1"), new Sahkoasema("2"), false);
-        Voimajohto testijohto2 = new Voimajohto(new Sahkoasema("2"), new Sahkoasema("3"), false);
-        Voimajohto testijohto3 = new Voimajohto(new Sahkoasema("4"), new Sahkoasema("5"), true);
-        testiSahkoasema.lisaaVoimajohto(testijohto1);
-
-        assertEquals(false, testiSahkoasema.tarkastaAsemanJannite());
-        testiSahkoasema.lisaaVoimajohto(testijohto2);
-        assertEquals(false, testiSahkoasema.tarkastaAsemanJannite());
-        testiSahkoasema.lisaaVoimajohto(testijohto3);
-        assertEquals(true, testiSahkoasema.tarkastaAsemanJannite());
-        }
+    public void testVoimaJohtojenLisays(){
+        assertEquals(true, this.testiasema.getVoimajohdotAsemalta().containsKey("2"));
+        assertEquals(false, this.testiasema.getVoimajohdotAsemalta().containsKey("1"));
+        assertEquals(true, this.testiasema.getVoimajohdotAsemalta().containsKey("3"));
+    }
+    @Test
+    public void testJannite(){
+        assertEquals(true, testiasema.onkoSahkotAsemalle("2"));
+        assertEquals(false, testiasema.onkoSahkotAsemalle("3"));
+    }
 }
