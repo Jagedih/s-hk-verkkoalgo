@@ -13,9 +13,15 @@ public class Sahkoasema {
         this.voimajohtoLista.put(voimajohto, !jannite.equals("0"));
     }
     public HashMap<String,Boolean> getVoimajohdotAsemalta(){
+        //**palauttaa HashMapin sahkoaseman voimajohdoista**\\
         return this.voimajohtoLista;
     }
-    public boolean onkoSahkotAsemalle(String avain){
-        return this.voimajohtoLista.get(avain);
+    public boolean onkoSahkotAsemalle(String sahkoasemanNimi){
+        //**palauttaa arvon true jos kahden sähköaseman välisellä voimajohdolla on jännite**\\
+        return this.voimajohtoLista.get(sahkoasemanNimi);
+    }
+    public boolean onkoVoimajohtoAsemalle(String sahkoasemanNimi){
+        //** palauttaa rvon true jos kahden sähköaseman välillä on voimajohto**\\
+        return this.voimajohtoLista.containsKey(sahkoasemanNimi);
     }
 }
