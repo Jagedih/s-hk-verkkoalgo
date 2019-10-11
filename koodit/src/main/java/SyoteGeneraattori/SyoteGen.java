@@ -46,9 +46,7 @@ public final class SyoteGen {
         }
     }
     public void lisaaVerkonLiitannaisyytta(){
-        /**Lisää yhtenäisen verkon runkoon kaaren kahden verkon solmun välille 
-         * jos solmuilla on alle 4 kaarta**/
-       System.out.println("lisataan");
+        /**Lisää yhtenäisen verkon runkoon kaaren kahden verkon solmun välille**/
        int i = this.solmut.length-1;
        while(i < this.kaariLista.length){
            int satunnainenSolmu1 = lukuGen.nextInt(this.solmut.length-1);
@@ -60,7 +58,6 @@ public final class SyoteGen {
                i++;
            }
        }
-       System.out.println("lopetetaan");
     }
     public int arvoSahkolinjanJannite(){
         /**Arpoo kaaren painon, mikä kuvaa voimajohdon tilaa (joko siinä kulkee sähköä tai ei)**/
