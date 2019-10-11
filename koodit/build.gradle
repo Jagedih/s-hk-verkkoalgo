@@ -35,5 +35,7 @@ jacocoTestReport {
         html.enabled = true
     }
 }
+apply plugin: 'application'
+mainClassName = 'Main'
 
 check.dependsOn jacocoTestReport
