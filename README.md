@@ -1,5 +1,7 @@
 # sahkoverkkoalgo
 Tietorakenteet & algorimit laboratoriokurssin harjoitustyö
+* [Release](https://github.com/Jagedih/sahkoverkkoalgo/tree/master/sahkoverkkoalgo.jar)
+* [Kayttöohje](https://github.com/Jagedih/sahkoverkkoalgo/tree/master/dokumentit/kayttoohje.md)
 * [Määrittelydokumentti](https://github.com/Jagedih/sahkoverkkoalgo/tree/master/dokumentit/maarittelydokumentti.md)
 * [Toteutusdokumentti](https://github.com/Jagedih/sahkoverkkoalgo/tree/master/dokumentit/toteutusdokumentti.md)
 * [Testausdokumentti](https://github.com/Jagedih/sahkoverkkoalgo/tree/master/dokumentit/testausdokumentti.md)
