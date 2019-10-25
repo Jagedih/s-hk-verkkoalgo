@@ -18,6 +18,7 @@ Solmun asserEquals metodi testattu ja samalla hajautuskoodin toimivuus.
 Pinosta on testattu metodit alkioiden lisäykselle, poistolle ja pinon koon laskenta. Pinosta poistuu oikea (päällimmäinen) alkio ja lisäksi pino pitää oikeaa kirjaa alkioiden määrästä pinossa.
 
 * Hajautustaulun testaus
-Hajautustaulutestin perusteella hajautustaulu tallentaa alkiot oikein tauluun ja palauttaa avainta vastaavat arvot oikein.
+Hajautustaulua on testattu vertaamalla tallennettuja avain-arvo pareja tallennusdataan, eli sitä että hajautustaulusta löytyy avaimella oikea arvo. 
+Hajaututaulusta on lisäksi testattu metodi, joka plauttaa joukon taulukon avaimista vertaamalla jokaista metodin palauttamaa avainta tallennettuihin avaimiin.
 
 ![kuva](https://github.com/Jagedih/sahkoverkkoalgo/blob/master/dokumentit/testit.png)
