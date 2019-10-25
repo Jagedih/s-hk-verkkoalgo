@@ -3,21 +3,29 @@ package Algoritmit;
 import Verkkokomponentit.Sahkoasema;
 import Verkkokomponentit.Verkko;
 import java.util.HashSet;
-import java.util.Stack;
+import tietorakenteet.Pino;
 
+/**
+ * Syvyyshakualgoritmi joka hakee verkon yhtenäiset osat ja reitit
+ * @author Jagedih
+ */
 public class Syvyyshaku {
-    /**Syvyyshakualgoritmi joka hakee verkon yhtenäiset osat ja reitit**/
     private boolean[] vieraillutSolmut;
-    private Stack<Sahkoasema> kaariPino;
-    private Stack<HashSet> aliverkot;
+    private Pino<Sahkoasema> kaariPino;
+    private Pino<HashSet> aliverkot;
     private Verkko verkko;
     int saarekeLkm=0;
     
+    /**
+     *
+     * @param verkko luokan Verkko verkko jota tutkitaan syvyyshaulla
+     */
     public Syvyyshaku(Verkko verkko){
-        this.vieraillutSolmut = new boolean[verkko.sahkoasemalista.size()];
+        System.out.println("Sahkoverkon saarekkeet (yhtenäiset osat)");
+        this.vieraillutSolmut = new boolean[verkko.sahkoasemalista.koko()];
         this.verkko = verkko;
-        this.kaariPino = new Stack<>();
-        this.aliverkot = new Stack<>();
+        this.kaariPino = new Pino<>();
+        this.aliverkot = new Pino<>();
         
         for(int i=0; i < this.vieraillutSolmut.length; i++){
             if(this.vieraillutSolmut[i] != true){
@@ -27,35 +35,41 @@ public class Syvyyshaku {
         }
     }
     private void haeReititSolmusta(String solmu){
+        String saareke = "{";
         HashSet<String> aliverkko = new HashSet<>();
-        this.kaariPino.push(this.verkko.getSahkoasema(solmu));
+        this.kaariPino.puske(this.verkko.getSahkoasema(solmu));
         
-        while(!kaariPino.empty()){
-            Sahkoasema sahkoasema = kaariPino.pop();
+        while(!kaariPino.onkoTyhja()){
+            Sahkoasema sahkoasema = kaariPino.poistaYlin();
+            saareke += " "+ sahkoasema.asemaNumero;
             aliverkko.add(sahkoasema.asemaNumero);
             this.vieraillutSolmut[Integer.parseInt(sahkoasema.asemaNumero)] = true;
 
-            for(String vastaAsemanNimi : sahkoasema.voimajohtoLista.keySet()){
-                if(sahkoasema.onkoSahkotAsemalle(vastaAsemanNimi) == true
-                        && this.vieraillutSolmut[Integer.parseInt(vastaAsemanNimi)] == false){
-                    this.kaariPino.push(verkko.getSahkoasema(vastaAsemanNimi));
+            for(Object vastaAsemanNimi : sahkoasema.voimajohtoLista.avainSetti()){
+                String nimi = (String) vastaAsemanNimi;
+                if(sahkoasema.onkoSahkotAsemalle(nimi) == true
+                        && this.vieraillutSolmut[Integer.parseInt(nimi)] == false){
+                    this.kaariPino.puske(verkko.getSahkoasema(nimi));
                 }
             }
         }
-        this.aliverkot.add(aliverkko);
+        saareke += " }";
+        System.out.println(saareke);
+        this.aliverkot.puske(aliverkko);
     }
-    public Stack<HashSet> getAliverkot(){
+
+    /**
+     *
+     * @return Palauttaa pinon aliverkoista
+     */
+    public Pino<HashSet> getAliverkot(){
         return this.aliverkot;
     }
-    public void tulostaAliverkot(){
-        for(int i=0; i < this.aliverkot.size();i++){
-            String tuloste = "";
-            for(Object sahkoasema : this.aliverkot.get(i)){
-                tuloste += " -> " + sahkoasema;
-            }
-            System.out.println((i+1) + " Saareke:" +tuloste);
-        }
-    }
+
+    /**
+     *
+     * @return palauttaa arvon true jos verkko on yhtenäinen
+     */
     public boolean onkoVerkkoYhtenainen(){
         return this.saarekeLkm == 1;
     }
