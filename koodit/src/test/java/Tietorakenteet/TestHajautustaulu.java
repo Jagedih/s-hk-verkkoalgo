@@ -20,8 +20,21 @@ public class TestHajautustaulu {
         
         //avaimenkyselytesti
         assertEquals(true, testitaulu.onkoAvainTaulussa("3"));
-        assertEquals(true, testitaulu.onkoAvainTaulussa("51"));
         assertEquals(false, testitaulu.onkoAvainTaulussa("300"));
+    }
+    @Test
+    public void testAvainSetti(){
+        Hajautustaulu<String, String> testitaulu = new Hajautustaulu<>();
+        testitaulu.lisaa("3", "0");
+        testitaulu.lisaa("51", "2");
+        testitaulu.lisaa("21", "2");
+        
+        Object[] avaimet = testitaulu.avainSetti();
+        assertEquals(true, avaimet[0].equals("3"));
+        assertEquals(true, avaimet[1].equals("21"));
+        assertEquals(true, avaimet[2].equals("51"));
+        assertEquals(true, avaimet.length == 3);
+        
     }
     
 }

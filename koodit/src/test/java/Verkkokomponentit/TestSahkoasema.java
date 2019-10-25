@@ -15,9 +15,9 @@ public class TestSahkoasema {
     }
     @Test
     public void testVoimaJohtojenLisays(){
-        assertEquals(true, this.testiasema.getVoimajohdotAsemalta().containsKey("2"));
-        assertEquals(false, this.testiasema.getVoimajohdotAsemalta().containsKey("1"));
-        assertEquals(true, this.testiasema.getVoimajohdotAsemalta().containsKey("3"));
+        assertEquals(true, this.testiasema.getVoimajohdotAsemalta().onkoAvainTaulussa("2"));
+        assertEquals(false, this.testiasema.getVoimajohdotAsemalta().onkoAvainTaulussa("1"));
+        assertEquals(true, this.testiasema.getVoimajohdotAsemalta().onkoAvainTaulussa("3"));
     }
     @Test
     public void testJannite(){
